@@ -138,6 +138,60 @@
   text-align: center;
 }
 
+/* Botones para compartir en redes sociales */
+.social-share {
+  margin: var(--spacing-xxl) 0;
+  padding: var(--spacing-xl);
+  background: linear-gradient(135deg, rgba(0, 119, 181, 0.1), rgba(10, 102, 194, 0.1));
+  border: 2px solid #0077b5;
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.social-share h3 {
+  color: var(--text-color);
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-xl);
+}
+
+.btn-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background-color: #0077b5;
+  color: white;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-linkedin:hover {
+  background-color: #005885;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg), 0 0 20px rgba(0, 119, 181, 0.5);
+}
+
+.btn-linkedin:active {
+  transform: translateY(0);
+}
+
+.btn-linkedin svg {
+  width: 20px;
+  height: 20px;
+}
+
+.share-note {
+  margin-top: var(--spacing-md);
+  color: var(--text-light);
+  font-size: var(--font-size-sm);
+  font-style: italic;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .blog-post-hero {

@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import BlogEditor from './pages/BlogEditor';
 import Projects from './pages/Projects';
 import Games from './pages/Games';
 import Header from './components/Header';
@@ -116,6 +117,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogPost />} />
+            <Route path="/blog-editor" element={<BlogEditor />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/games" element={<Games />} />
           </Routes>
