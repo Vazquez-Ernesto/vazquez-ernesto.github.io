@@ -22,6 +22,25 @@
     <meta name="twitter:title" content="Blog - Ernesto Vázquez" />
     <meta name="twitter:description" content="Artículos sobre desarrollo web, React, JavaScript y QA Automation" />
     <meta name="twitter:image" content="https://vazquez-ernesto.github.io/og-image.jpg" />
+    
+    <!-- Single Page Apps for GitHub Pages -->
+    <script type="text/javascript">
+      // Restore the path from 404.html redirect
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+        if (sessionStorage.redirect) {
+          history.replaceState(null, null, sessionStorage.redirect);
+          delete sessionStorage.redirect;
+        }
+      }(window.location))
+    </script>
   </head>
   <body>
     <div id="root"></div>
