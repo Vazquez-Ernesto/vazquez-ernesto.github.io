@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import './BlogPost.css'
 import blogPostsData from '../data/blogPosts.json'
 
@@ -33,6 +34,26 @@ function BlogPost() {
 
   return (
     <div className="blog-post">
+      <Helmet>
+        <title>{post.title} | Blog de Ernesto Vázquez</title>
+        <meta name="description" content={post.excerpt} />
+        
+        {/* Open Graph / LinkedIn */}
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt} />
+        <meta property="og:url" content={window.location.href} />
+        <meta property="og:site_name" content="Blog de Ernesto Vázquez" />
+        <meta property="article:author" content="Ernesto Vázquez" />
+        <meta property="article:published_time" content={post.date} />
+        <meta property="article:tag" content={post.category} />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.excerpt} />
+      </Helmet>
+
       <div className="blog-post-hero">
         <div className="container">
           <Link to="/blog" className="back-link">

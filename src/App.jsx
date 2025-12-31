@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import "./styles/App.css";
 
 // Importa tus páginas
@@ -102,29 +103,31 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <div ref={containerRef} className="app">
-        {/* Nueva capa de plasma - Movimiento orgánico tipo lava */}
-        <div className="plasma-background"></div>
-        
-        {/* Stream de peticiones HTTP en el fondo */}
-        <div className="http-stream" id="http-stream"></div>
-        
-        <Header />
-        <main className="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:id" element={<BlogPost />} />
-            <Route path="/blog-editor" element={<BlogEditor />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/games" element={<Games />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <div ref={containerRef} className="app">
+          {/* Nueva capa de plasma - Movimiento orgánico tipo lava */}
+          <div className="plasma-background"></div>
+          
+          {/* Stream de peticiones HTTP en el fondo */}
+          <div className="http-stream" id="http-stream"></div>
+          
+          <Header />
+          <main className="main-content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:id" element={<BlogPost />} />
+              <Route path="/blog-editor" element={<BlogEditor />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/games" element={<Games />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </HelmetProvider>
   );
 }
 
