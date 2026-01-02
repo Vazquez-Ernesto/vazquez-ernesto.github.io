@@ -12,7 +12,7 @@ function Home() {
               Hola, soy <span className="highlight">Ernesto Vázquez</span>
             </h1>
             <p className="hero-subtitle">
-              QA Automation Engineer | Especialista en Cypress, Selenium, Playwright y Pruebas E2E
+              QA Automation Engineer |Cypress, Selenium, Playwright y Pruebas E2E
             </p>
             <div className="hero-buttons">
               <Link to="/projects" className="btn">
@@ -60,7 +60,7 @@ function Home() {
         <div className="container">
           <div className="cta-content card">
             <h2>¿Buscas mejorar la calidad de tu producto?</h2>
-            <p>Más de 4 años asegurando la calidad en banca, fintech y entornos ágiles</p>
+            <p>Más de 4 años asegurando la calidad en banca, fintech, telecomunicaciones y entornos ágiles</p>
             <Link to="/about" className="btn">
               Contáctame
             </Link>
