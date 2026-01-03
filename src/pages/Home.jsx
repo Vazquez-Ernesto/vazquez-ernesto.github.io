@@ -12,7 +12,7 @@ function Home() {
               Hola, soy <span className="highlight">Ernesto Vázquez</span>
             </h1>
             <p className="hero-subtitle">
-              QA Automation Engineer |Cypress, Selenium, Playwright y Pruebas E2E
+              QA Automation Engineer | Cypress, Selenium, Playwright y Pruebas E2E
             </p>
             <div className="hero-buttons">
               <Link to="/projects" className="btn">

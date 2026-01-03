@@ -14,10 +14,49 @@ function BlogPost() {
 
   // Función para compartir en LinkedIn
   const shareOnLinkedIn = () => {
-    const url = window.location.href
-    const title = post.title
-    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`
-    window.open(linkedInUrl, '_blank', 'width=600,height=600')
+    try {
+      const currentUrl = window.location.href;
+      
+      if (!currentUrl) {
+        console.error('Unable to retrieve current URL for sharing');
+        return;
+      }
+
+      const encodedUrl = encodeURIComponent(currentUrl);
+      const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
+      
+      const windowWidth = 550;
+      const windowHeight = 550;
+      const windowLeft = Math.max(0, (window.screen.width / 2) - (windowWidth / 2));
+      const windowTop = Math.max(0, (window.screen.height / 2) - (windowHeight / 2));
+      
+      const windowFeatures = [
+        `width=${windowWidth}`,
+        `height=${windowHeight}`,
+        `left=${windowLeft}`,
+        `top=${windowTop}`,
+        'toolbar=no',
+        'location=no',
+        'directories=no',
+        'status=no',
+        'menubar=no',
+        'scrollbars=yes',
+        'resizable=yes',
+        'copyhistory=no'
+      ].join(',');
+
+      const shareWindow = window.open(linkedInShareUrl, 'linkedin-share-dialog', windowFeatures);
+
+      if (!shareWindow || shareWindow.closed || typeof shareWindow.closed === 'undefined') {
+        console.warn('Popup blocked. Attempting fallback navigation.');
+        window.location.href = linkedInShareUrl;
+      } else {
+        shareWindow.focus();
+      }
+    } catch (error) {
+      console.error('LinkedIn share failed:', error);
+      alert('No se pudo abrir el diálogo de LinkedIn. Verifica el bloqueador de ventanas emergentes.');
+    }
   }
 
   // Si no se encuentra el post, mostrar error
