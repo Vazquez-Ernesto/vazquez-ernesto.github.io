@@ -14,48 +14,15 @@ function BlogPost() {
 
   // Función para compartir en LinkedIn
   const shareOnLinkedIn = () => {
-    try {
-      const currentUrl = window.location.href;
-      
-      if (!currentUrl) {
-        console.error('Unable to retrieve current URL for sharing');
-        return;
-      }
-
-      const encodedUrl = encodeURIComponent(currentUrl);
-      const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
-      
-      const windowWidth = 550;
-      const windowHeight = 550;
-      const windowLeft = Math.max(0, (window.screen.width / 2) - (windowWidth / 2));
-      const windowTop = Math.max(0, (window.screen.height / 2) - (windowHeight / 2));
-      
-      const windowFeatures = [
-        `width=${windowWidth}`,
-        `height=${windowHeight}`,
-        `left=${windowLeft}`,
-        `top=${windowTop}`,
-        'toolbar=no',
-        'location=no',
-        'directories=no',
-        'status=no',
-        'menubar=no',
-        'scrollbars=yes',
-        'resizable=yes',
-        'copyhistory=no'
-      ].join(',');
-
-      const shareWindow = window.open(linkedInShareUrl, 'linkedin-share-dialog', windowFeatures);
-
-      if (!shareWindow || shareWindow.closed || typeof shareWindow.closed === 'undefined') {
-        console.warn('Popup blocked. Attempting fallback navigation.');
-        window.location.href = linkedInShareUrl;
-      } else {
-        shareWindow.focus();
-      }
-    } catch (error) {
-      console.error('LinkedIn share failed:', error);
-      alert('No se pudo abrir el diálogo de LinkedIn. Verifica el bloqueador de ventanas emergentes.');
+    const currentUrl = window.location.href;
+    const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`;
+    
+    // Abrir en nueva pestaña (más confiable que popup)
+    const newWindow = window.open(linkedInShareUrl, '_blank', 'noopener,noreferrer');
+    
+    // Si el navegador bloqueó el popup, intentar navegación directa
+    if (!newWindow) {
+      window.location.href = linkedInShareUrl;
     }
   }
 
