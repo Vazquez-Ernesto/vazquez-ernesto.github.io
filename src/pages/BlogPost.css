@@ -1,5 +1,5 @@
 .blog-post-hero {
-  background: var(--bg-color);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(177, 15, 46, 0.1));
   color: white;
   padding: var(--spacing-xxl) 0 var(--spacing-xl);
   position: relative;
