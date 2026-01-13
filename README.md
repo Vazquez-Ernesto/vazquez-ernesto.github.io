@@ -124,6 +124,8 @@ Este proyecto me ha permitido:
 - GitHub: [Vazquez-Ernesto](https://github.com/Vazquez-Ernesto)
 - Portfolio: https://vazquez-ernesto.github.io/
 
+Mantengo este README actualizado con cada nueva iteración del sitio.
+
 ## Licencia
 
 Este proyecto es de código abierto y está disponible bajo la Licencia ISC.
