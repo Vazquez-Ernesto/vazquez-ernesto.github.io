@@ -80,6 +80,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   margin-bottom: var(--spacing-sm);
   font-size: var(--font-size-sm);
 }
@@ -90,10 +92,12 @@
   padding: 0.25rem 0.75rem;
   border-radius: var(--radius-sm);
   font-weight: 600;
+  max-width: 65%;
 }
 
 .blog-date {
   color: var(--text-light);
+  white-space: nowrap;
 }
 
 .blog-card-content h2 {
