@@ -13,37 +13,51 @@ function BlogPost() {
   // Buscar el post por ID
   const post = blogPosts.find(p => p.id === parseInt(id))
 
-  // Registrar evento de vista de artículo en GA4
+  /**
+   * ===============================
+   * EVENTO GA4: VIEW BLOG POST
+   * ===============================
+   * Se dispara UNA SOLA VEZ por post
+   * Compatible con GTM + SPA
+   */
   useEffect(() => {
-    if (post && typeof window.gtag !== 'undefined') {
-      window.gtag('event', 'view_blog_post', {
-        article_title: post.title,
-        article_category: post.category,
-        article_id: post.id
-      });
-    }
-  }, [post]);
+    if (!post) return
 
-  // Función para compartir en LinkedIn
+    window.dataLayer = window.dataLayer || []
+    window.dataLayer.push({
+      event: 'view_blog_post',
+      article_title: post.title,
+      article_category: post.category,
+      article_id: post.id,
+      article_slug: post.slug ?? id
+    })
+  }, [post?.id])
+
+  /**
+   * ===============================
+   * EVENTO GA4: SHARE ARTICLE
+   * ===============================
+   * Se dispara al hacer click en LinkedIn
+   */
   const shareOnLinkedIn = () => {
-    const currentUrl = window.location.href;
-    const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`;
-    
-    // Registrar evento de compartir en GA4
-    if (typeof window.gtag !== 'undefined') {
-      window.gtag('event', 'share_article', {
-        method: 'LinkedIn',
-        article_title: post.title,
-        article_id: post.id
-      });
-    }
-    
-    // Abrir en nueva pestaña (más confiable que popup)
-    const newWindow = window.open(linkedInShareUrl, '_blank', 'noopener,noreferrer');
-    
-    // Si el navegador bloqueó el popup, intentar navegación directa
+    if (!post) return
+
+    const currentUrl = window.location.href
+    const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`
+
+    window.dataLayer = window.dataLayer || []
+    window.dataLayer.push({
+      event: 'share_article',
+      method: 'LinkedIn',
+      article_title: post.title,
+      article_category: post.category,
+      article_id: post.id
+    })
+
+    const newWindow = window.open(linkedInShareUrl, '_blank', 'noopener,noreferrer')
+
     if (!newWindow) {
-      window.location.href = linkedInShareUrl;
+      window.location.href = linkedInShareUrl
     }
   }
 
