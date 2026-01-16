@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
+import { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import './BlogPost.css'
 import blogPostsData from '../data/blogPosts.json'
@@ -12,10 +13,30 @@ function BlogPost() {
   // Buscar el post por ID
   const post = blogPosts.find(p => p.id === parseInt(id))
 
+  // Registrar evento de vista de artículo en GA4
+  useEffect(() => {
+    if (post && typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'view_blog_post', {
+        article_title: post.title,
+        article_category: post.category,
+        article_id: post.id
+      });
+    }
+  }, [post]);
+
   // Función para compartir en LinkedIn
   const shareOnLinkedIn = () => {
     const currentUrl = window.location.href;
     const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`;
+    
+    // Registrar evento de compartir en GA4
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'share_article', {
+        method: 'LinkedIn',
+        article_title: post.title,
+        article_id: post.id
+      });
+    }
     
     // Abrir en nueva pestaña (más confiable que popup)
     const newWindow = window.open(linkedInShareUrl, '_blank', 'noopener,noreferrer');
