@@ -1,10 +1,13 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react'
+import { useAuth } from '../context/AuthContext'
 import './Header.css'
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const location = useLocation()
+    const SHOW_AUTH_BUTTONS = false; // Cambia a true cuando quieras mostrar
+  const { user, logout } = useAuth()
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -12,6 +15,15 @@ function Header() {
 
   const closeMenu = () => {
     setIsMenuOpen(false)
+  }
+
+  const handleLogout = async () => {
+    try {
+      await logout()
+      closeMenu()
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error)
+    }
   }
 
   const isActive = (path) => {
@@ -82,6 +94,52 @@ function Header() {
                  Juegos
               </Link>
             </li>
+            
+            {/* Auth buttons */}
+              {SHOW_AUTH_BUTTONS && (
+                user ? (
+                  <>
+                    <li>
+                      <Link
+                        to="/my-courses"
+                        className={`${isActive('/my-courses')} btn-header`}
+                        onClick={closeMenu}
+                      >
+                        Mis Cursos
+                      </Link>
+                    </li>
+                    <li>
+                      <button
+                        onClick={handleLogout}
+                        className="btn-header btn-logout"
+                      >
+                        Salir
+                      </button>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <Link
+                        to="/login"
+                        className="btn-header btn-login"
+                        onClick={closeMenu}
+                      >
+                        Login
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/signup"
+                        className="btn-header btn-signup"
+                        onClick={closeMenu}
+                      >
+                        Signup
+                      </Link>
+                    </li>
+                  </>
+                )
+              )}
           </ul>
         </nav>
       </div>

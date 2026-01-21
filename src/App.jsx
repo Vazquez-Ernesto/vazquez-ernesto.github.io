@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import "./styles/App.css";
 
+// Context providers
+import { AuthProvider } from './context/AuthContext';
+
 // Importa tus páginas
 import Home from './pages/Home';
 import About from './pages/About';
@@ -11,8 +14,13 @@ import BlogPost from './pages/BlogPost';
 import BlogEditor from './pages/BlogEditor';
 import Projects from './pages/Projects';
 import Games from './pages/Games';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 import Header from './components/Header';
 import Footer from './components/Footer';
+
+// Componentes de autenticación
+import ProtectedRoute from './components/auth/ProtectedRoute';
 
 function App() {
   const containerRef = useRef(null);
@@ -104,29 +112,35 @@ function App() {
 
   return (
     <HelmetProvider>
-      <Router>
-        <div ref={containerRef} className="app">
-          {/* Nueva capa de plasma - Movimiento orgánico tipo lava */}
-          <div className="plasma-background"></div>
-          
-          {/* Stream de peticiones HTTP en el fondo */}
-          <div className="http-stream" id="http-stream"></div>
-          
-          <Header />
-          <main className="main-content">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:id" element={<BlogPost />} />
-              <Route path="/blog-editor" element={<BlogEditor />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/games" element={<Games />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </Router>
+      <AuthProvider>
+        <Router>
+          <div ref={containerRef} className="app">
+            {/* Nueva capa de plasma - Movimiento orgánico tipo lava */}
+            <div className="plasma-background"></div>
+            
+            {/* Stream de peticiones HTTP en el fondo */}
+            <div className="http-stream" id="http-stream"></div>
+            
+            <Header />
+            <main className="main-content">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:id" element={<BlogPost />} />
+                <Route path="/blog-editor" element={<BlogEditor />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/games" element={<Games />} />
+                
+                {/* Rutas de autenticación */}
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+        </Router>
+      </AuthProvider>
     </HelmetProvider>
   );
 }
