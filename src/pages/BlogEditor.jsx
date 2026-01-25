@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './BlogEditor.css'
+import '../styles/BlogEditor.css'
 
 function BlogEditor() {
   const [formData, setFormData] = useState({

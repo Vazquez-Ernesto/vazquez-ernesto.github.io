@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import './Blog.css'
+import '../styles/blog.css'
 import blogPostsData from '../data/blogPosts.json'
 
 function Blog() {

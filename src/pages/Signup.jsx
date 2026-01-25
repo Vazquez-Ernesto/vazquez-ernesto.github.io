@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
-import './Login.css'
+import '../styles/Login.css'
 
 function Signup() {
   const [name, setName] = useState('')

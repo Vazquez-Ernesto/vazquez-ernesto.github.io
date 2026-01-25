@@ -1,0 +1,103 @@
+.course-detail-container {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  margin: 40px auto;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.course-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.badge {
+  background: var(--primary-color);
+  color: #fff;
+  border-radius: 8px;
+  padding: 2px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-right: 8px;
+  box-shadow: 0 0 8px var(--accent-color);
+}
+
+.back-link {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 12px;
+  display: inline-block;
+  transition: color 0.2s;
+}
+.back-link:hover {
+  color: #fff;
+}
+
+.course-detail-container h1 {
+  color: var(--text-color);
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  text-shadow: var(--neon-glow);
+}
+
+.course-detail-container h3 {
+  color: var(--accent-color);
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.course-detail-container h4 {
+  color: var(--primary-color);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.course-detail-container ul {
+  margin-left: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.course-detail-container li {
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.course-detail-container iframe {
+  border: none;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  background: #222;
+}
+
+.course-detail-container .course-enroll-btn {
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--text-color);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 12px 0;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px var(--primary-color);
+  margin-bottom: 12px;
+}
+
+.course-detail-container .course-enroll-btn:hover {
+  background: var(--accent-color);
+  color: #fff;
+  box-shadow: 0 0 16px var(--neon-accent);
+}
+
+@media (max-width: 900px) {
+  .course-detail-container {
+    flex-direction: column;
+    gap: 24px;
+    padding: 0 12px;
+  }
+}

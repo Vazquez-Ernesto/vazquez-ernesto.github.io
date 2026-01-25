@@ -1,4 +1,4 @@
-import './About.css'
+import '../styles/about.css'
 import profileImage from '/assets/images/PerfilAbout.png'
 
 function About() {

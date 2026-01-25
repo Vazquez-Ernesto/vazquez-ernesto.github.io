@@ -1,0 +1,52 @@
+.syllabus-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: rgba(30, 10, 30, 0.92);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px 0 rgba(177, 15, 46, 0.18);
+  padding: 40px 32px;
+  color: #fff;
+}
+
+.syllabus-container h1 {
+  color: #ffb347;
+  margin-bottom: 18px;
+}
+
+.syllabus-video {
+  margin-bottom: 32px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px 0 rgba(255, 26, 75, 0.10);
+}
+
+.syllabus-container h2 {
+  margin-top: 24px;
+  color: #ff1a4b;
+}
+
+.syllabus-container ul {
+  margin-left: 18px;
+  margin-bottom: 18px;
+}
+
+.syllabus-info {
+  margin-top: 32px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+
+.syllabus-back {
+  display: inline-block;
+  margin-top: 32px;
+  color: #ffb347;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.15s;
+}
+
+.syllabus-back:hover {
+  color: #ff1a4b;
+}

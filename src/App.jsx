@@ -18,6 +18,11 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Courses from './pages/Courses';
+import CourseDetail from './pages/CourseDetail';
+import CourseSyllabus from './pages/CourseSyllabus';
+import Dashboard from './pages/Dashboard';
+import SeedCoursesButton from './components/SeedCoursesButton';
 
 // Componentes de autenticación
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -131,6 +136,12 @@ function App() {
                 <Route path="/blog-editor" element={<BlogEditor />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/games" element={<Games />} />
+                <Route path="/courses" element={<Courses />} />
+                <Route path="/courses/:id" element={<CourseDetail />} />
+                <Route path="/course-syllabus/:courseId" element={<CourseSyllabus />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                
+                
                 
                 {/* Rutas de autenticación */}
                 <Route path="/login" element={<Login />} />

@@ -1,0 +1,44 @@
+.dashboard-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgb(0, 0, 0), rgba(255, 26, 75, 0.1));
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+.dashboard-courses-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.dashboard-course-card {
+  background: linear-gradient(135deg, rgb(0, 0, 0), rgba(255, 26, 75, 0.1));
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 1.5rem;
+  min-width: 260px;
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.dashboard-course-card h3 {
+  margin: 0 0 0.5rem 0;
+}
+.dashboard-course-card a {
+  margin-top: auto;
+  color: #d22219    ;
+  text-decoration: underline;
+  font-weight: 500;
+}
+.dashboard-progress {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #333;
+  background: linear-gradient(135deg, rgb(0, 0, 0), rgba(255, 26, 75, 0.1));
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  display: inline-block;
+}

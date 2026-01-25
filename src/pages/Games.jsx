@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import './Games.css'
+import '../styles/games.css'
 
 function Games() {
   const [currentGame, setCurrentGame] = useState('menu')

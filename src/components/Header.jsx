@@ -4,9 +4,10 @@ import { useAuth } from '../context/AuthContext'
 import './Header.css'
 
 function Header() {
+  const SHOW_ACADEMY = false;
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const location = useLocation()
-    const SHOW_AUTH_BUTTONS = false; // Cambia a true cuando quieras mostrar
+  const SHOW_AUTH_BUTTONS = false; // Cambia a true cuando quieras mostrar
   const { user, logout } = useAuth()
 
   const toggleMenu = () => {
@@ -91,55 +92,56 @@ function Header() {
                 className={isActive('/games')}
                 onClick={closeMenu}
               >
-                 Juegos
+                Juegos
               </Link>
             </li>
             
-            {/* Auth buttons */}
-              {SHOW_AUTH_BUTTONS && (
-                user ? (
-                  <>
-                    <li>
-                      <Link
-                        to="/my-courses"
-                        className={`${isActive('/my-courses')} btn-header`}
-                        onClick={closeMenu}
-                      >
-                        Mis Cursos
-                      </Link>
-                    </li>
-                    <li>
-                      <button
-                        onClick={handleLogout}
-                        className="btn-header btn-logout"
-                      >
-                        Salir
-                      </button>
-                    </li>
-                  </>
-                ) : (
-                  <>
-                    <li>
-                      <Link
-                        to="/login"
-                        className="btn-header btn-login"
-                        onClick={closeMenu}
-                      >
-                        Login
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/signup"
-                        className="btn-header btn-signup"
-                        onClick={closeMenu}
-                      >
-                        Signup
-                      </Link>
-                    </li>
-                  </>
-                )
-              )}
+          {/* Mostrar botones de Login/Signup solo si SHOW_AUTH_BUTTONS está en true y no hay usuario */}
+          {SHOW_AUTH_BUTTONS && !user && (
+            <>
+              <li>
+                <Link
+                  to="/login"
+                  className="btn-header btn-login"
+                  onClick={closeMenu}
+                >
+                  Login
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/signup"
+                  className="btn-header btn-signup"
+                  onClick={closeMenu}
+                >
+                  Signup
+                </Link>
+              </li>
+            </>
+          )}
+
+          {/* Mostrar Mis Cursos y Salir solo si SHOW_ACADEMY está en true y hay usuario */}
+          {SHOW_ACADEMY && user && (
+            <>
+              <li>
+                <Link
+                  to="/courses"
+                  className={`${isActive('/courses')} btn-header`}
+                  onClick={closeMenu}
+                >
+                  Cursos
+                </Link>
+              </li>
+              <li>
+                <button
+                  onClick={handleLogout}
+                  className="btn-header btn-logout"
+                >
+                  Salir
+                </button>
+              </li>
+            </>
+          )}
           </ul>
         </nav>
       </div>

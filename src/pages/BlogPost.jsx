@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
-import './BlogPost.css'
+import '../styles/BlogPost.css'
 import blogPostsData from '../data/blogPosts.json'
 
 function BlogPost() {
