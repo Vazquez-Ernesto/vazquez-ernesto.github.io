@@ -1,6 +1,7 @@
 # Portfolio 2.0
 
 Portfolio personal y blog construido con React, representando la evolución de mi viaje como desarrollador web.
+Redeploy pages
 
 ## Descripción
 
