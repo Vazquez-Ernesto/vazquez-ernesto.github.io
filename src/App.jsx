@@ -16,6 +16,7 @@ import Projects from './pages/Projects';
 import Games from './pages/Games';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Mentorship from './pages/Mentorship';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Courses from './pages/Courses';
@@ -131,6 +132,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/mentorship" element={<Mentorship />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:id" element={<BlogPost />} />
                 <Route path="/blog-editor" element={<BlogEditor />} />
