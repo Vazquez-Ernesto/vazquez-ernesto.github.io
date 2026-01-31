@@ -11,6 +11,7 @@ function Mentorship() {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
 
   const handleChange = (e) => {
@@ -33,6 +34,7 @@ function Mentorship() {
           '¡Gracias por aplicar a la mentoría! Te voy a responder a la brevedad con los próximos pasos.'
         );
         setFormData({ name: '', email: '', topic: '', message: '' });
+        setIsSubmitted(true);
       } else {
         setSubmitMessage(
           'Ocurrió un error al enviar el mensaje. Por favor, intentá nuevamente.'
@@ -62,169 +64,157 @@ function Mentorship() {
 
           {/* HERO */}
           <section className="mentorship-hero">
-            <h1>Mentorías para QAs que quieren crecer profesionalmente</h1>
+            <h1>Mentorías para QAs que quieren crecer</h1>
             <p className="hero-description">
-              Te ayudo a avanzar al siguiente nivel como QA: conseguir tu primer trabajo,
-              dar el salto a automation o acceder a mejores oportunidades laborales.
+              Sesiones 1:1 para conseguir tu primer trabajo, dar el salto a automation o acceder a mejores oportunidades.
             </p>
-            <p className="hero-description">
-              Mentorías 1:1, prácticas y enfocadas en resultados reales.
-            </p>
+            <a href="#contact" className="cta-btn">Aplicá ahora</a>
           </section>
 
           {/* VALUE */}
           <section className="mentorship-intro">
+            <h2>¿Por qué una mentoría?</h2>
             <p>
-              Trabajo con QAs que están empezando, con perfiles manuales que quieren
-              automatizar y con profesionales que buscan crecer o cambiar a un mejor puesto.
-            </p>
-            <p>
-              El enfoque es simple: menos teoría, más claridad y acción concreta.
+              Menos teoría, más claridad y acción. Te ayudo a definir tu camino y dar los pasos correctos.
             </p>
           </section>
 
           {/* SERVICES */}
           <section className="mentorship-services">
-            <h2>¿En qué te puedo ayudar?</h2>
+            <h2>¿En qué te ayudo?</h2>
 
             <div className="services-grid">
               <div className="service-card">
-                <h3>🔰 QA Junior / Trainee</h3>
-                <p>
-                  Si estás empezando y no sabés qué estudiar, cómo armar tu CV
-                  o cómo prepararte para entrevistas.
-                </p>
-                <ul>
-                  <li>Roadmap de aprendizaje realista</li>
-                  <li>Revisión de CV y LinkedIn</li>
-                  <li>Preparación para entrevistas QA</li>
-                  <li>Próximos pasos claros</li>
-                </ul>
+                <h3>🔰 QA Junior</h3>
+                <p>Roadmap, CV, entrevistas y primeros pasos.</p>
               </div>
 
               <div className="service-card">
-                <h3>⚙️ QA Manual → Automation</h3>
-                <p>
-                  Si tenés experiencia manual pero no sabés cómo dar el salto a automation.
-                </p>
-                <ul>
-                  <li>Qué aprender y qué no</li>
-                  <li>Cómo practicar automation de forma efectiva</li>
-                  <li>Cómo vender tu perfil como QA Automation</li>
-                  <li>Expectativas reales del mercado</li>
-                </ul>
+                <h3>⚙️ Manual → Automation</h3>
+                <p>Qué aprender, cómo practicar y vender tu perfil.</p>
               </div>
 
               <div className="service-card">
                 <h3>🚀 Crecimiento Profesional</h3>
-                <p>
-                  Si sentís que estás estancado o querés acceder a mejores oportunidades.
-                </p>
-                <ul>
-                  <li>Análisis de tu perfil actual</li>
-                  <li>Habilidades clave para crecer</li>
-                  <li>Estrategia para entrevistas</li>
-                  <li>Plan de acción profesional</li>
-                </ul>
+                <p>Análisis de perfil, habilidades clave y estrategia.</p>
               </div>
             </div>
           </section>
 
           {/* HOW IT WORKS */}
           <section className="mentorship-process">
-            <h2>¿Cómo funciona la mentoría?</h2>
+            <h2>¿Cómo funciona?</h2>
             <ul>
-              <li>Sesión 1:1 de 45–60 minutos</li>
-              <li>Enfoque personalizado según tu situación</li>
-              <li>Feedback honesto y accionable</li>
-              <li>Plan de acción concreto al finalizar</li>
+              <li>45–60 min 1:1</li>
+              <li>Enfoque personalizado</li>
+              <li>Feedback accionable</li>
+              <li>Plan concreto al final</li>
             </ul>
-            <p>
-              No es una charla genérica. Es una sesión pensada para que te vayas
-              sabiendo exactamente qué hacer después.
-            </p>
           </section>
 
           {/* CONTACT */}
-          <section className="mentorship-contact">
-            <h2>Aplicá a una mentoría</h2>
-            <p>
-              Contame en qué punto estás hoy como QA y qué objetivo querés lograr.
-              Te voy a responder con los próximos pasos.
-            </p>
+          <section id="contact" className="mentorship-contact">
+            {!isSubmitted ? (
+              <>
+                <h2>Aplicá ahora</h2>
+                <p>Contame tu situación y objetivo. Te respondo con los próximos pasos.</p>
 
-            <form className="contact-form" onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="name">Nombre *</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
+                <form className="contact-form" onSubmit={handleSubmit}>
+                  <div className="form-group">
+                    <label htmlFor="name">Nombre *</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
 
-              <div className="form-group">
-                <label htmlFor="email">Email *</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
+                  <div className="form-group">
+                    <label htmlFor="email">Email *</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
 
-              <div className="form-group">
-                <label htmlFor="topic">Tu situación actual</label>
-                <select
-                  id="topic"
-                  name="topic"
-                  value={formData.topic}
-                  onChange={handleChange}
-                >
-                  <option value="">Seleccioná una opción</option>
-                  <option value="junior">QA Junior / Trainee</option>
-                  <option value="manual-to-auto">QA Manual → Automation</option>
-                  <option value="growth">Crecimiento / Cambio laboral</option>
-                  <option value="other">Otro</option>
-                </select>
-              </div>
+                  <div className="form-group">
+                    <label htmlFor="topic">Tu situación actual</label>
+                    <select
+                      id="topic"
+                      name="topic"
+                      value={formData.topic}
+                      onChange={handleChange}
+                    >
+                      <option value="">Seleccioná una opción</option>
+                      <option value="junior">QA Junior / Trainee</option>
+                      <option value="manual-to-auto">QA Manual → Automation</option>
+                      <option value="growth">Crecimiento / Cambio laboral</option>
+                      <option value="other">Otro</option>
+                    </select>
+                  </div>
 
-              <div className="form-group">
-                <label htmlFor="message">Mensaje *</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows="5"
-                  placeholder="Contame tu experiencia actual como QA y qué objetivo querés lograr en los próximos meses."
-                  required
-                ></textarea>
-              </div>
+                  <div className="form-group">
+                    <label htmlFor="message">Mensaje *</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      rows="5"
+                      placeholder="Contame tu experiencia actual como QA y qué objetivo querés lograr en los próximos meses."
+                      required
+                    ></textarea>
+                  </div>
 
-              <button
-                type="submit"
-                className="submit-btn"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? 'Enviando...' : 'Enviar aplicación'}
-              </button>
+                  <button
+                    type="submit"
+                    className="submit-btn"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Enviando...' : 'Enviar aplicación'}
+                  </button>
 
-              {submitMessage && (
-                <div
-                  className={`submit-message ${
-                    submitMessage.toLowerCase().includes('error') ? 'error' : 'success'
-                  }`}
-                >
-                  {submitMessage}
+                  {submitMessage && !result.success && (
+                    <div className="submit-message error">
+                      {submitMessage}
+                    </div>
+                  )}
+                </form>
+              </>
+            ) : (
+              <div className="success-message">
+                <div className="mascota">
+                  <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" fill="url(#gradient)" stroke="#ff073a" strokeWidth="3" filter="url(#glow)"/>
+                    <circle cx="35" cy="40" r="5" fill="white"/>
+                    <circle cx="65" cy="40" r="5" fill="white"/>
+                    <path d="M40 60 Q50 70 60 60" stroke="white" strokeWidth="3" fill="none"/>
+                    <defs>
+                      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style={{stopColor: '#ff073a'}}/>
+                        <stop offset="100%" style={{stopColor: '#c90202'}}/>
+                      </linearGradient>
+                      <filter id="glow">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feMerge> 
+                          <feMergeNode in="coloredBlur"/>
+                          <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                      </filter>
+                    </defs>
+                  </svg>
                 </div>
-              )}
-            </form>
+                <h2>¡Aplicación enviada!</h2>
+                <p>{submitMessage}</p>
+              </div>
+            )}
           </section>
 
         </div>

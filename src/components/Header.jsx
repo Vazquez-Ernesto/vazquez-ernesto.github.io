@@ -7,7 +7,7 @@ function Header() {
   const SHOW_ACADEMY = false;
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const location = useLocation()
-    const SHOW_MENTORSHIP = false; // Cambia a true para mostrar el botón de Mentorías
+    const SHOW_MENTORSHIP = true; // Cambia a true para mostrar el botón de Mentorías
     const SHOW_AUTH_BUTTONS = false; // Cambia a true cuando quieras mostrar
   const { user, logout } = useAuth()
 

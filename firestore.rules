@@ -1,0 +1,26 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Usuarios solo pueden leer/escribir su propio perfil
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    // Cursos: lectura pública, escritura solo usuarios autenticados (solo para pruebas)
+    match /courses/{courseId} {
+      allow read: if true;
+      allow write: if request.auth != null; // <--- CAMBIO AQUÍ
+    }
+    // Inscripciones: solo el usuario puede leer/escribir las suyas
+    match /enrollments/{enrollmentId} {
+      // Para crear (addDoc), validamos contra request.resource.data
+      allow create: if request.auth != null && request.auth.uid == request.resource.data.userId;
+      // Para leer, actualizar o borrar, validamos contra resource.data existente
+      allow read, update, delete: if request.auth != null && request.auth.uid == resource.data.userId;
+    }
+    // Contactos de mentoría: escritura pública para formularios, lectura solo autenticada
+    match /mentorshipContacts/{contactId} {
+      allow create: if true; // Permitir escritura pública para el formulario
+      allow read: if request.auth != null; // Solo lectura para usuarios autenticados (tú)
+    }
+  }
+}
